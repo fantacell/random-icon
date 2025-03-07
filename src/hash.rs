@@ -4,8 +4,9 @@ pub fn hash(string: String) -> u32 {
     if vec.is_empty() {
         vec = vec![0]
     }
-
-    for mut c in vec.iter_mut() {
+    //because if the string consists of many numbers
+    //then many of the values would be like 0b00000011
+    for c in vec.iter_mut() {
         let noise = u8::try_from(c.count_zeros()).unwrap() & 0b1111;
 
         *c = *c ^ noise;
@@ -20,14 +21,18 @@ pub fn hash(string: String) -> u32 {
     let filled_remainder = if remainder.is_empty() {
         vec![]
     } else {
-        let mut modifiable_slice = remainder.to_vec();
-        modifiable_slice.push(remainder[0].rotate_left(3));
-        if modifiable_slice.len() < 3 {
-            modifiable_slice.push(remainder[0].rotate_right(3));
+        let mut vec = remainder.to_vec();
+        vec.push(remainder[0].rotate_left(3));
+        if vec.len() < 3 {
+            vec.push(remainder[0].rotate_right(3));
         }
 
-        vec![modifiable_slice.as_slice()]
+        vec![vec]
     };
+    let filled_remainder = filled_remainder
+        .iter()
+        .map(|vec| vec.as_slice())
+    ;
 
     let groups_of_3 = groups_of_3.chain(filled_remainder);
 
