@@ -1,11 +1,12 @@
 pub mod random;
+pub mod svg;
 
 use random::Random;
 
 pub struct Fields {
     sectors: [Sector; 6], //clockwise
     sector_dividers: [SectorDivider; 3], //clockwise,
-    center_field: Field
+    center_field: FieldValue
 }
 
 impl Random for Fields {
@@ -16,7 +17,7 @@ impl Random for Fields {
             Symmetry::OneAxis => {
                 let sectors = [Sector::random(); 3];
                 let sector_dividers = [SectorDivider::random(); 2];
-                let center_field = Field::random();
+                let center_field = FieldValue::random();
 
                 let all_sectors = [sectors[0], sectors[1], sectors[2], sectors[2], sectors[1], sectors[0]];
                 let all_sector_dividers = [sector_dividers[0], sector_dividers[1], sector_dividers[0]];
@@ -30,7 +31,7 @@ impl Random for Fields {
             Symmetry::ThreeAxes => {
                 let sector = Sector::random();
                 let sector_divider = SectorDivider::random();
-                let center_field = Field::random();
+                let center_field = FieldValue::random();
 
                 let all_sectors = [sector; 6];
                 let all_sector_dividers = [sector_divider; 3];
@@ -44,7 +45,7 @@ impl Random for Fields {
             Symmetry::Point => {
                 let sectors = [Sector::random(); 2];
                 let sector_divider = SectorDivider::random();
-                let center_field = Field::random();
+                let center_field = FieldValue::random();
 
                 let all_sectors = [[sectors[0], sectors[1]]; 3].as_flattened().try_into().unwrap();
                 let all_sector_dividers = [sector_divider; 3];
@@ -60,13 +61,13 @@ impl Random for Fields {
 }
 
 #[derive(Clone, Copy)]
-pub struct Sector([Field; 4]); //inner to outer
+pub struct Sector([FieldValue; 4]); //inner to outer
 
 #[derive(Clone, Copy)]
-pub struct SectorDivider([Field; 3]); //outer to inner
+pub struct SectorDivider([FieldValue; 3]); //outer to inner
 
 #[derive(Clone, Copy)]
-pub enum Field {
+pub enum FieldValue {
     Empty,
     Filled
 }
