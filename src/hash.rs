@@ -17,7 +17,9 @@ pub fn hash(string: String) -> u32 {
     ;
     let remainder = groups_of_3.remainder();
 
-    let groups_of_3  = groups_of_3.chain({
+    let filled_remainder = if remainder.is_empty() {
+        vec![]
+    } else {
         let mut modifiable_slice = remainder.to_vec();
         modifiable_slice.push(remainder[0].rotate_left(3));
         if modifiable_slice.len() < 3 {
@@ -25,7 +27,9 @@ pub fn hash(string: String) -> u32 {
         }
 
         vec![modifiable_slice.as_slice()]
-    });
+    };
+
+    let groups_of_3 = groups_of_3.chain(filled_remainder);
 
     let large_values = groups_of_3
         .map(|group_of_three| {
