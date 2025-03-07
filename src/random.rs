@@ -1,7 +1,8 @@
 use crate::{Field, Fields, Sector, SectorDivider, Symmetry};
 
-use std::ops::{Deref, Range, RangeBounds, RangeInclusive};
+use std::ops::Range;
 
+#[derive(Clone, Copy)]
 pub struct HashGen {
     hash: u32
 }
@@ -27,107 +28,108 @@ impl HashGen {
             }
         }
     }
+
+     pub fn gen_bool_cycle(&mut self) -> bool {
+        self.gen_range_cycle(0..2) != 0
+    }
 }
 
-impl Fields {
-    pub fn from_hash(hash: u32) -> Self {
-        let hash_gen = HashGen::new(hash);
+pub trait FromHash {
+    fn from_hash(hash_gen: &mut HashGen) -> Self;
+}
 
-        let symmetry = match hash_gen.gen_range_cycle(0..3) {
+impl FromHash for Fields {
+    fn from_hash(hash_gen: &mut HashGen) -> Self {
+        let symmetry = Symmetry::from_hash(hash_gen);
+        let center_field: Field = Field::from_hash(hash_gen);
+
+        match symmetry {
+            Symmetry::OneAxis => {
+                let sectors = [Sector::from_hash(hash_gen); 3];
+                let sector_dividers = [SectorDivider::from_hash(hash_gen); 2];
+
+                let all_sectors = [sectors[0], sectors[1], sectors[2], sectors[2], sectors[1], sectors[0]];
+                let all_sector_dividers = [sector_dividers[0], sector_dividers[1], sector_dividers[0]];
+
+                Self {
+                    sectors: all_sectors,
+                    sector_dividers: all_sector_dividers,
+                    center_field
+                }
+            },
+            Symmetry::ThreeAxes => {
+                let sector = Sector::from_hash(hash_gen);
+                let sector_divider = SectorDivider::from_hash(hash_gen);
+
+                let all_sectors = [sector; 6];
+                let all_sector_dividers = [sector_divider; 3];
+
+                Self {
+                    sectors: all_sectors,
+                    sector_dividers: all_sector_dividers,
+                    center_field
+                }
+            },
+            Symmetry::Point => {
+                let sectors = [Sector::from_hash(hash_gen); 2];
+                let sector_divider = SectorDivider::from_hash(hash_gen);
+
+                let all_sectors = [sectors[0], sectors[1], sectors[0], sectors[1], sectors[0], sectors[1]];
+                let all_sector_dividers = [sector_divider; 3];
+
+                Self {
+                    sectors: all_sectors,
+                    sector_dividers: all_sector_dividers,
+                    center_field
+                }
+            }
+        }
+    }
+}
+
+impl FromHash for Symmetry {
+    fn from_hash(hash_gen: &mut HashGen) -> Self {
+        match hash_gen.gen_range_cycle(0..3) {
             0 => Symmetry::OneAxis,
             1 => Symmetry::ThreeAxes,
             2 => Symmetry::Point,
             _ => panic!("generated unfitting value")
-        };
-
-        let 
-
-        //let mut used_bits = 0;
-//
-        //let symmetry_number = if (0..3).contains(&(hash & 0b111111u32.rotate_right(6 + used_bits)).rotate_left(6 + used_bits)) {
-        //    (hash & 0b111111u32.rotate_right(6 + used_bits)).rotate_left(6 + used_bits)
-        //} else {
-//
-        //}
-//
-        //let mut sectors = [Sector::default(); 3];
-        //for i in 0..3 {
-        //    let four_bits = (hash & 0b1111u32.rotate_right((i + 1) * 4 + used_bits)).rotate_left((i + 1) * 4 + used_bits);
-        //    used_bits += 4;
-//
-        //    sectors[i.try_into().unwrap()] = Sector::from_hash(four_bits.try_into().unwrap())
-        //}
-//
-        //let mut sector_dividers = [SectorDivider::default(); 3];
-        //for i in 0..2 {
-        //    let three_bits = (hash & 0b111u32.rotate_right((i + 1) * 3 + used_bits)).rotate_left((i + 1) * 3 + used_bits);
-        //    used_bits += 3;
-//
-        //    sectors[i.try_into().unwrap()] = Sector::from_hash(three_bits.try_into().unwrap())
-        //}
-//
-        //let center_field = if ((hash & 1u32.rotate_right(1 + used_bits)).rotate_right(1 + used_bits)) == 0 {
-        //    Field::Empty
-        //} else {
-        //    Field::Filled
-        //};
-        //used_bits += 1;
-//
-        //Self {
-        //    sectors,
-        //    sector_dividers,
-        //    center_field
-        //}
+        }
     }
 }
 
-impl From<HashGen> for Sector {
-    fn from(mut value: HashGen) -> Self {
-        let 
-    }
-}
-
-
-
-
-impl Sector {
-    fn from_hash(hash: u8) -> Self {
+impl FromHash for Sector {
+    fn from_hash(hash_gen: &mut HashGen) -> Self {
         let mut sector = Self::default();
 
-        for i in 0..4usize {
-            let bit = hash & (0b1000 >> i);
-            let bool: bool = bit != 0;
-
-            if bool {
-                sector.0[i] = Field::Filled
-            }
+        for mut _field in &mut sector.0 {
+            _field = &mut Field::from_hash(hash_gen);
         }
 
         sector
     }
 }
 
-impl SectorDivider {
-    fn from_hash(hash: u8) -> Self {
+impl FromHash for SectorDivider {
+    fn from_hash(hash_gen: &mut HashGen) -> Self {
         let mut sector_divider = Self::default();
 
-        for i in 0..3usize {
-            let bit = hash & (0b100 >> i);
-            let bool: bool = bit != 0;
-
-            if bool {
-                sector_divider.0[i] = Field::Filled
-            }
+        for mut _field in &mut sector_divider.0 {
+            _field = &mut Field::from_hash(hash_gen);
         }
 
         sector_divider
     }
 }
 
-impl Default for Field {
-    fn default() -> Self {
-        Self::Empty
-    }
+impl FromHash for Field {
+    fn from_hash(hash_gen: &mut HashGen) -> Self {
+        if hash_gen.gen_bool_cycle() {
+            Self::Filled
+        } else {
+            Self::Empty
+        }
+    }   
 }
 
 impl Default for Sector {
@@ -142,30 +144,8 @@ impl Default for SectorDivider {
     }
 }
 
-pub trait Random {
-    fn random() -> Self;
-}
-
-impl Random for Field {
-    fn random() -> Self {
-        Self::Filled
-    }
-}
-
-impl Random for Sector {
-    fn random() -> Self {
-        Self([Field::random(); 4])
-    }
-}
-
-impl Random for SectorDivider {
-    fn random() -> Self {
-        Self([Field::random(); 3])
-    }
-}
-
-impl Random for Symmetry {
-    fn random() -> Self {
-        Self::OneAxis
+impl Default for Field {
+    fn default() -> Self {
+        Self::Empty
     }
 }
