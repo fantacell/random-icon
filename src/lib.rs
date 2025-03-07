@@ -1,3 +1,4 @@
+pub mod hash;
 pub mod random;
 
 use random::Random;
