@@ -1,10 +1,15 @@
 use svg::node::element::path::{self, Data};
 
-use super::Field;
+use super::FieldShape;
 
-pub struct CenterField;
+pub enum SectorField {
+    Inner,
+    InnerMid,
+    OuterMid,
+    Outer
+}
 
-impl Field for CenterField {
+impl FieldShape for SectorField {
     fn svg_path_data(self) -> path::Data {
         Data::new()
             .move_by((20.652, 11.923))

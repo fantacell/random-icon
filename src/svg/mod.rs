@@ -12,26 +12,27 @@ impl From<Fields> for Document {
     }
 }
 
-pub trait Field {
+pub trait FieldShape {
     fn svg_path_data(self) -> path::Data;
 }
 
-pub enum SectorFieldOriginalOrientation {
-    Inner,
-    InnerMid,
-    OuterMid,
-    Outer
-}
-
-pub enum SectorFieldMirrored {
-    Inner,
-    InnerMid,
-    OuterMid,
-    Outer
-}
-
-pub enum SectorDividerField {
-    Inner,
-    Mid,
-    Outer
-}
+//pub enum SectorFieldOriginalOrientation {
+//    Inner,
+//    InnerMid,
+//    OuterMid,
+//    Outer
+//}
+//
+//pub enum SectorFieldMirrored {
+//    Inner,
+//    InnerMid,
+//    OuterMid,
+//    Outer
+//}
+//
+//pub enum SectorDividerField {
+//    Inner,
+//    Mid,
+//    Outer
+//}
+//
