@@ -11,6 +11,9 @@ fn main() {
     let mut hash_gen = HashGen::new(hash);
     let fields = Fields::from_hash(&mut hash_gen);
 
-    let mut target_file = std::path::PathBuf::from("./icons");
-    target_file.push(hash.to_string());
+    let target_directory = std::path::PathBuf::from("./icons");
+    let target_file_name = hash.to_string();
+
+    let mut target_path = target_directory;
+    target_path.push(target_file_name);
 }
