@@ -13,7 +13,7 @@ impl From<Fields> for Document {
 }
 
 pub trait FieldShape {
-    fn svg_path_data(self) -> path::Data;
+    fn svg_shape_data(self) -> path::Data;
 }
 
 //pub enum SectorFieldOriginalOrientation {

@@ -10,7 +10,7 @@ pub enum SectorField {
 }
 
 impl FieldShape for SectorField {
-    fn svg_path_data(self) -> path::Data {
+    fn svg_shape_data(self) -> path::Data {
         match self {
             SectorField::Outer => {
                 Data::new()
