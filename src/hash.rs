@@ -4,6 +4,7 @@ pub fn hash(string: String) -> u32 {
     if vec.is_empty() {
         vec = vec![0]
     }
+    
     //because if the string consists of many numbers
     //then many of the values would be like 0b00000011
     for c in vec.iter_mut() {
