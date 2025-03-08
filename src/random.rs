@@ -1,10 +1,14 @@
-use crate::{Field, Fields, Sector, SectorDivider, Symmetry};
+use crate::fields::{Field, Fields, Sector, SectorDivider, Symmetry};
 
 use std::ops::Range;
 
 #[derive(Clone, Copy)]
 pub struct HashGen {
     hash: u32
+}
+
+pub trait FromHash {
+    fn from_hash(hash_gen: &mut HashGen) -> Self;
 }
 
 impl HashGen {
@@ -32,10 +36,6 @@ impl HashGen {
      pub fn gen_bool_cycle(&mut self) -> bool {
         self.gen_range_cycle(0..2) != 0
     }
-}
-
-pub trait FromHash {
-    fn from_hash(hash_gen: &mut HashGen) -> Self;
 }
 
 impl FromHash for Fields {
