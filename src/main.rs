@@ -16,4 +16,6 @@ fn main() {
 
     let mut target_path = target_directory;
     target_path.push(target_file_name);
+
+    fields.save_svg_file(target_path);
 }
