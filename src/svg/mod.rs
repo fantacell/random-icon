@@ -1,19 +1,27 @@
+use std::path::Path;
+
+use crate::fields::Fields;
+
 pub mod center_field;
-pub mod rotate;
+pub mod path;
 pub mod sector_field;
 
-use svg::{node::element::path, Document};
-
-use crate::Fields;
-
-impl From<Fields> for Document {
-    fn from(value: Fields) -> Self {
-        
+impl Fields {
+    pub fn save_as_svg_file<L: AsRef<Path>>(self, location: L) {
+        let document = svg::Document::new()
+            .set("viewBox", (-50, -50, 50, 50))
+            .set("width", "100")
+            .set("height", "100")
+        ;
     }
 }
 
 pub trait FieldShape {
-    fn svg_shape_data(self) -> path::Data;
+    fn field_border_path_data(self) -> FieldBorder;
+}
+
+pub struct FieldBorder {
+    path_data: svg::node::element::path::Data
 }
 
 //pub enum SectorFieldOriginalOrientation {
