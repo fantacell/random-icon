@@ -46,6 +46,7 @@ impl FromHash for Fields {
         match symmetry {
             Symmetry::OneAxis => {
                 let sectors = [Sector::from_hash(hash_gen); 3];
+                println!("sectors: {sectors:?}");
                 let sector_dividers = [SectorDivider::from_hash(hash_gen); 2];
 
                 let all_sectors = [sectors[0], sectors[1], sectors[2], sectors[2], sectors[1], sectors[0]];
