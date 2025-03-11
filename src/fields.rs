@@ -10,7 +10,7 @@ pub struct Sector(pub [Field; 4]); //inner to outer
 #[derive(Clone, Copy)]
 pub struct SectorDivider(pub [Field; 3]); //inner to outer
 
-#[derive(Clone, Copy)]
+#[derive(Clone, Copy, PartialEq, Eq)]
 pub enum Field {
     Empty,
     Filled

@@ -1,10 +1,7 @@
-use std::path::Path;
+pub mod index;
+pub mod shape_data;
 
 use crate::fields::Fields;
-
-pub mod center_field;
-pub mod path;
-pub mod sector_field;
 
 impl Fields {
     pub fn save_as_svg_file(self, location: std::path::PathBuf) {
@@ -17,7 +14,7 @@ impl Fields {
         for (field_shape, degrees) in self.active_field_shapes_with_rotation() {
             let path_element = svg::node::element::Path::new()
                 .set("fill", "black")
-                .set("d", field_shape)
+                .set("d", field_shape.field_border_path_data().path_data)
                 .set("transform", format!("rotate({}, 0, 0)", degrees))
             ;
 
@@ -28,8 +25,19 @@ impl Fields {
     }
 }
 
-pub trait FieldShape {
-    fn field_border_path_data(self) -> FieldBorder;
+pub enum FieldShape {
+    SectorInner,
+    SectorInnerMid,
+    SectorOuterMid,
+    SectorOuter,
+    SectorMirroredInner,
+    SectorMirroredInnerMid,
+    SectorMirroredOuterMid,
+    SectorMirroredOuter,
+    SectorDividerInner,
+    SectorDividerMid,
+    SectorDividerOuter,
+    CenterField
 }
 
 pub struct FieldBorder {
