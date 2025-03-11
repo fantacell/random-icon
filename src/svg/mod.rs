@@ -21,7 +21,7 @@ impl Fields {
             document = document.add(path_element)
         }
 
-        svg::save(location, &document).unwrap();
+        svg::save(location.with_extension("svg"), &document).unwrap();
     }
 }
 
@@ -43,24 +43,3 @@ pub enum FieldShape {
 pub struct FieldBorder {
     path_data: svg::node::element::path::Data
 }
-
-//pub enum SectorFieldOriginalOrientation {
-//    Inner,
-//    InnerMid,
-//    OuterMid,
-//    Outer
-//}
-//
-//pub enum SectorFieldMirrored {
-//    Inner,
-//    InnerMid,
-//    OuterMid,
-//    Outer
-//}
-//
-//pub enum SectorDividerField {
-//    Inner,
-//    Mid,
-//    Outer
-//}
-//
