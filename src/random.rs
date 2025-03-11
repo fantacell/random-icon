@@ -25,7 +25,7 @@ impl HashGen {
         loop {
             let generated_value = self.hash & template;
 
-            self.hash <<= required_bits;
+            self.hash = self.hash.rotate_left(required_bits);
 
             if range.contains(&generated_value) {
                 break generated_value;
@@ -103,8 +103,8 @@ impl FromHash for Sector {
     fn from_hash(hash_gen: &mut HashGen) -> Self {
         let mut sector = Self::default();
 
-        for mut _field in &mut sector.0 {
-            _field = &mut Field::from_hash(hash_gen);
+        for field in sector.0.iter_mut() {
+            *field = Field::from_hash(hash_gen);
         }
 
         sector
