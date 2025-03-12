@@ -6,7 +6,7 @@ use crate::fields::Fields;
 impl Fields {
     pub fn save_as_svg_file(self, location: std::path::PathBuf) {
         let mut document = svg::Document::new()
-            .set("viewBox", (-50, -50, 50, 50))
+            .set("viewBox", (-50, -50, 100, 100))
             .set("width", "100")
             .set("height", "100")
         ;

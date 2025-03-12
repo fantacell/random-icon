@@ -10,7 +10,7 @@ impl FieldShape {
                 .move_to((0, -50))
                 .elliptical_arc_to((50, 50, 0, 0, 1, 42.267, -26.712))
                 .line_to((27.808, -18.364))
-                .elliptical_arc_to((33.324, 33.324, 0, 0, 0, 27.808, -18.364))
+                .elliptical_arc_to((33.324, 33.324, 0, 0, 0, 20.651, -26.155))
                 .vertical_line_to(-38.077)
                 .close()
             },
@@ -28,7 +28,8 @@ impl FieldShape {
                 .elliptical_arc_to((33.324, 33.324, 0, 0, 1, 20.651, -26.155))
                 .vertical_line_to(-14.232)
                 .line_to((20.651, -14.232))
-                .line_to((0, 26.155))
+                .line_to(((10.325, -8.271)))
+                .line_to((0, -26.155))
                 .close()
             },
             SectorInner => {
