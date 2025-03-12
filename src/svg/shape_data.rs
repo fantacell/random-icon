@@ -28,7 +28,7 @@ impl FieldShape {
                 .elliptical_arc_to((33.324, 33.324, 0, 0, 1, 20.651, -26.155))
                 .vertical_line_to(-14.232)
                 .line_to((20.651, -14.232))
-                .line_to(((10.325, -8.271)))
+                .line_to((10.325, -8.271))
                 .line_to((0, -26.155))
                 .close()
             },
