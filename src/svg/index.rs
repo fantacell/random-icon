@@ -28,7 +28,7 @@ impl Fields {
                 };
 
                 let angle = 60 * u16::try_from(num_sector).unwrap() + {
-                    if sector_mirrored { 120 } else { 0 }
+                    if sector_mirrored { 60 } else { 0 }
                 };
 
                 vec.push((field, angle, orientation));
