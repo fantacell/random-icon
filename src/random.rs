@@ -42,7 +42,7 @@ impl FromHash for Fields {
     fn from_hash(hash_gen: &mut HashGen) -> Self {
         let symmetry = Symmetry::from_hash(hash_gen);
         let center_field: Field = Field::from_hash(hash_gen);
-
+              
         match symmetry {
             Symmetry::OneAxis => {
                 let sectors = [Sector::from_hash(hash_gen); 3];

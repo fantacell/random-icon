@@ -17,6 +17,7 @@ pub enum Field {
     Filled
 }
 
+#[derive(Debug)]
 pub enum Symmetry {
     OneAxis,
     ThreeAxes,
