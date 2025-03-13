@@ -40,37 +40,16 @@ impl FieldShape {
                 .close()
             },
             SectorMirroredOuter => {
-                Data::new()
-                .move_to((-0, -50))
-                .elliptical_arc_to((50, 50, 0, 0, 1, -42.267, -26.712))
-                .line_to((-27.808, -18.364))
-                .elliptical_arc_to((33.324, 33.324, 0, 0, 0, -27.808, -18.364))
-                .vertical_line_to(-38.077)
-                .close()
+                SectorOuter.field_border_path_data().path_data
             },
             SectorMirroredOuterMid => {
-                Data::new()
-                .move_to((-0, -50))
-                .line_to((-20.651, -38.077))
-                .vertical_line_to(-26.155)
-                .elliptical_arc_to((33.324, 33.324, 0, 0, 0, 0, -33.324))
-                .close()
+                SectorOuterMid.field_border_path_data().path_data
             },
             SectorMirroredInnerMid => {
-                Data::new()
-                .move_to((0, -33.324))
-                .elliptical_arc_to((33.324, 33.324, 0, 0, 1, -20.651, -26.155))
-                .vertical_line_to(-14.232)
-                .line_to((-20.651, -14.232))
-                .line_to((0, -26.155))
-                .close()
+                SectorInnerMid.field_border_path_data().path_data
             },
             SectorMirroredInner => {
-                Data::new()
-                .move_to((0, -26.155))
-                .line_to((-10.325, -8.271))
-                .line_to((0, -2.309))
-                .close()
+                SectorMirroredInner.field_border_path_data().path_data
             },
             SectorDividerInner => {
                 Data::new()
