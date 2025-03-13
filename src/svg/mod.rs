@@ -11,11 +11,15 @@ impl Fields {
             .set("height", "100")
         ;
         
-        for (field_shape, degrees) in self.active_field_shapes_with_rotation() {
+        for (field_shape, degrees, orientation) in self.active_field_shapes_with_rotation() {
+            let mut transform_string = format!("rotate({}, 0, 0)", degrees);
+            if orientation == Orientation::Mirrored {
+                transform_string.push_str(" scale(-1,1)");
+            }
             let path_element = svg::node::element::Path::new()
                 .set("fill", "black")
                 .set("d", field_shape.field_border_path_data().path_data)
-                .set("transform", format!("rotate({}, 0, 0)", degrees))
+                .set("transform", transform_string)
             ;
 
             document = document.add(path_element)
@@ -30,14 +34,16 @@ pub enum FieldShape {
     SectorInnerMid,
     SectorOuterMid,
     SectorOuter,
-    SectorMirroredInner,
-    SectorMirroredInnerMid,
-    SectorMirroredOuterMid,
-    SectorMirroredOuter,
     SectorDividerInner,
     SectorDividerMid,
     SectorDividerOuter,
     CenterField
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+enum Orientation {
+    Original,
+    Mirrored
 }
 
 pub struct FieldBorder {
