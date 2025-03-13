@@ -12,21 +12,10 @@ impl Fields {
         ;
         
         for (field_shape, degrees) in self.active_field_shapes_with_rotation() {
-            let mirrored = match field_shape {
-                FieldShape::SectorMirroredInner => true,
-                FieldShape::SectorMirroredInnerMid => true,
-                FieldShape::SectorMirroredOuterMid => true,
-                FieldShape::SectorMirroredOuter => true,
-                _ => false
-            };
-            let mut transform_str = format!("rotate({}, 0, 0)", degrees);
-            if mirrored {
-                transform_str.push_str(" scale(-1,1)");
-            }
             let path_element = svg::node::element::Path::new()
                 .set("fill", "black")
                 .set("d", field_shape.field_border_path_data().path_data)
-                .set("transform", transform_str)
+                .set("transform", format!("rotate({}, 0, 0)", degrees))
             ;
 
             document = document.add(path_element)
