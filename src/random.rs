@@ -1,6 +1,7 @@
 use crate::fields::{Field, Fields, Sector, SectorDivider, Symmetry};
 
 use std::ops::Range;
+use core::array;
 
 #[derive(Clone, Copy)]
 pub struct HashGen {
@@ -42,10 +43,10 @@ impl FromHash for Fields {
     fn from_hash(hash_gen: &mut HashGen) -> Self {
         let symmetry = Symmetry::from_hash(hash_gen);
         let center_field: Field = Field::from_hash(hash_gen);
-              
+
         match symmetry {
             Symmetry::OneAxis => {
-                let sectors = [Sector::from_hash(hash_gen); 3];
+                let sectors: [_; 3] = array::from_fn(|_| Sector::from_hash(hash_gen));
                 let sector_dividers = [SectorDivider::from_hash(hash_gen); 2];
 
                 let all_sectors = [sectors[0], sectors[1], sectors[2], sectors[2], sectors[1], sectors[0]];
@@ -71,7 +72,7 @@ impl FromHash for Fields {
                 }
             },
             Symmetry::Point => {
-                let sectors = [Sector::from_hash(hash_gen); 2];
+                let sectors: [_; 3] = array::from_fn(|_| Sector::from_hash(hash_gen));
                 let sector_divider = SectorDivider::from_hash(hash_gen);
 
                 let all_sectors = [sectors[0], sectors[1], sectors[0], sectors[1], sectors[0], sectors[1]];
