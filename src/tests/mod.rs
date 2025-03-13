@@ -10,8 +10,13 @@ pub mod tests {
     }
     
     #[test]
+    fn sector_fields_mirrored() {
+        show_all_single_sector_fields(1, "mirrored".into());
+    }
+
+    #[test]
     fn sector_fields_rotated() {
-        show_all_single_sector_fields(1, "rotated".into());
+        show_all_single_sector_fields(2, "rotated".into());
     }
 
     fn show_all_single_sector_fields(sector_number: usize, file_name_start: PathBuf) {
