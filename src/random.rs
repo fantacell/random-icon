@@ -115,8 +115,8 @@ impl FromHash for SectorDivider {
     fn from_hash(hash_gen: &mut HashGen) -> Self {
         let mut sector_divider = Self::default();
 
-        for mut _field in &mut sector_divider.0 {
-            _field = &mut Field::from_hash(hash_gen);
+        for field in sector_divider.0.iter_mut() {
+            *field = Field::from_hash(hash_gen);
         }
 
         sector_divider
