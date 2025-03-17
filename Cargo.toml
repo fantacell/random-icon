@@ -5,3 +5,6 @@ edition = "2021"
 
 [dependencies]
 svg = "0.18.0"
+
+[features]
+customfeature = [] # feature has no explicit dependencies
