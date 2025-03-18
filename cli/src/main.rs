@@ -1,4 +1,4 @@
-use random_icon::{
+use random_icon_lib::{
     fields::Fields,
     hash::hash,
     random::{FromHash, HashGen}

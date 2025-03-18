@@ -1,7 +1,7 @@
 [package]
-name = "random-icon-lib"
+name = "random-icon"
 version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-svg = "0.18.0"
+random-icon-lib = { path = "../lib" }

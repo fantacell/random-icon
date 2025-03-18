@@ -3,11 +3,14 @@
 version = 4
 
 [[package]]
-name = "cli"
+name = "random-icon"
 version = "0.1.0"
+dependencies = [
+ "random-icon-lib",
+]
 
 [[package]]
-name = "random-icon"
+name = "random-icon-lib"
 version = "0.1.0"
 dependencies = [
  "svg",
