@@ -4,11 +4,11 @@ use fields::Fields;
 use hash::hash;
 use random::{FromHash, HashGen};
 
-pub mod fields;
+mod fields;
 pub mod hash;
-pub mod random;
-pub mod svg;
-pub mod tests;
+mod random;
+mod svg;
+mod tests;
 
 pub fn save_random_icon_from_hashed_string(
     string: String,
