@@ -25,3 +25,15 @@ pub fn save_random_icon_from_hashed_string(
 
     fields.save_as_svg_file(target_path);
 }
+
+pub fn save_random_icon(
+    target_dir: PathBuf,
+    filename: Option<String>
+) {
+    let fields: Fields = rand::random();
+
+    let filename = filename.unwrap_or("random_icon".to_string());
+    let target_path = target_dir.join(filename);
+
+    fields.save_as_svg_file(target_path);
+}
