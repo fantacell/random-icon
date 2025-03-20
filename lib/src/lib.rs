@@ -2,7 +2,7 @@ use std::path::PathBuf;
 
 use fields::Fields;
 use hash::hash;
-use generate::from_hash::{FromHash, HashGen};
+use generate::from_hash::HashGen;
 
 mod fields;
 pub mod hash;
@@ -16,9 +16,8 @@ pub fn save_random_icon_from_hashed_string(
     filename: Option<String>
 ) {
     let hash = hash(string);
-
-    let mut hash_gen = HashGen::new(hash);
-    let fields = Fields::from_hash(&mut hash_gen);
+    let hash_gen = HashGen::new(hash);
+    let fields = Fields::new(hash_gen);
 
     let filename = filename.unwrap_or(hash.to_string());
     let target_path = target_dir.join(filename);
@@ -30,7 +29,7 @@ pub fn save_random_icon(
     target_dir: PathBuf,
     filename: Option<String>
 ) {
-    let fields: Fields = rand::random();
+    let fields: Fields = Fields::new(rand::rng());
 
     let filename = filename.unwrap_or("random_icon".to_string());
     let target_path = target_dir.join(filename);
