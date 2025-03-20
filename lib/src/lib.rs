@@ -8,7 +8,6 @@ mod fields;
 pub mod hash;
 mod generate;
 mod svg;
-mod tests;
 
 pub fn save_random_icon_from_hashed_string(
     string: String,

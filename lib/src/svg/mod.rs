@@ -1,5 +1,7 @@
 pub mod index;
 pub mod shape_data;
+#[cfg(test)]
+mod tests;
 
 use crate::fields::Fields;
 
