@@ -2,11 +2,11 @@ use std::path::PathBuf;
 
 use fields::Fields;
 use hash::hash;
-use random::{FromHash, HashGen};
+use generate::from_hash::{FromHash, HashGen};
 
 mod fields;
 pub mod hash;
-mod random;
+mod generate;
 mod svg;
 mod tests;
 
