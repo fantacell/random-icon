@@ -1,14 +1,13 @@
-use random_icon_lib::save_random_icon_from_hashed_string;
+use random_icon_lib::{save_random_icon, save_random_icon_from_hashed_string};
 
 fn main() {
-    let string = std::env::args()
-        .nth(1)
-        .unwrap_or("default".to_string())
-    ;
-
-    save_random_icon_from_hashed_string(
-        string,
-        "./icons".into(),
-        None
-    );
+    if let Some(string) = std::env::args().nth(1) {
+        save_random_icon_from_hashed_string(
+            string,
+            "./icons".into(),
+            None
+        );
+    } else {
+        save_random_icon("./icons".into(), None);
+    }
 }
