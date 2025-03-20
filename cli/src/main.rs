@@ -1,4 +1,7 @@
-use random_icon_lib::{save_random_icon, save_random_icon_from_hashed_string};
+use random_icon_lib::{
+    save_random_icon,
+    save_random_icon_from_hashed_string
+};
 
 fn main() {
     if let Some(string) = std::env::args().nth(1) {
