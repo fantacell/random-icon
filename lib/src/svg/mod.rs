@@ -3,12 +3,12 @@ pub mod shape_data;
 #[cfg(test)]
 mod tests;
 
-use std::io;
+use std::io::{self, Write};
 
 use crate::fields::Fields;
 
 impl Fields {
-    pub fn save_as_svg_file(self, location: std::path::PathBuf) -> Result<(), io::Error> {
+    pub fn write_as_svg<T: Write>(self, target: T) -> Result<(), io::Error> {
         let mut document = svg::Document::new()
             .set("viewBox", (-50, -50, 100, 100))
             .set("width", "100")
@@ -28,8 +28,7 @@ impl Fields {
 
             document = document.add(path_element)
         }
-
-        svg::save(location.with_extension("svg"), &document)
+        svg::write(target, &document)
     }
 }
 

@@ -1,5 +1,5 @@
 
-use std::path::PathBuf;
+use std::{fs::File, path::{Path, PathBuf}};
 use crate::fields::{Field, Fields, Sector};
 
 #[test]
@@ -37,8 +37,15 @@ fn show_all_single_sector_fields(sector_number: usize, file_name_start: PathBuf)
         fields_instances.push(fields);
     }
     for (i, fields) in fields_instances.into_iter().enumerate() {
-        fields.save_as_svg_file(
-            format!("./src/svg/tests/test_files/{}_field{}",file_name_start.to_str().unwrap(), i).into()
+        let path = format!(
+            "./src/svg/tests/test_files/{}_field{}",
+            file_name_start.to_str().unwrap(),
+            i
         );
+        let path = Path::new(&path);
+        let file = File::create(path).unwrap();
+        fields.write_as_svg(
+            file
+        ).unwrap();
     }
 }
