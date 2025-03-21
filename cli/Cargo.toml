@@ -5,3 +5,4 @@ edition = "2021"
 
 [dependencies]
 random-icon-lib = { path = "../lib", features = ["rand"] }
+clap = { version = "4.5.32", features = ["cargo"] }
