@@ -7,6 +7,7 @@
 /// use random_icon_lib::hash::hash;
 /// let my_string = "Lorem ipsum dolor sit amet...".to_string();
 /// let my_hash = hash(my_string);
+/// assert_eq!(my_hash, 2471472878)
 /// ```
 pub fn hash(string: String) -> u32 {
     let mut vec: Vec<u8> = string.into();
