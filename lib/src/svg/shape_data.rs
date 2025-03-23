@@ -2,6 +2,7 @@ use svg::node::element::path::Data;
 
 use super::{FieldBorder, FieldShape::{self, *}};
 
+//the values are absolute so that rounding errors do not add up
 impl FieldShape {
     pub fn field_border_path_data(self) -> FieldBorder {
         let path_data = match self {

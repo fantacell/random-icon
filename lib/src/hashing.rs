@@ -3,8 +3,9 @@
 /// 
 /// # Examples
 /// 
-/// ```rust
-/// use random_icon_lib::hash::hash;
+/// ```
+/// use random_icon_lib::hashing::hash;
+/// 
 /// let my_string = "Lorem ipsum dolor sit amet...".to_string();
 /// let my_hash = hash(my_string);
 /// assert_eq!(my_hash, 2471472878)
