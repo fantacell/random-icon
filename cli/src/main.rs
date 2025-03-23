@@ -52,8 +52,8 @@ fn main() -> io::Result<()> {
         } else {
             let directory = matches
                 .get_one::<PathBuf>("directory")
-                .unwrap_or(&"./".into())
-                .clone()
+                .cloned()
+                .unwrap_or("./".into())
             ;
             let file_name = matches
                 .get_one::<PathBuf>("file-name")
@@ -64,7 +64,6 @@ fn main() -> io::Result<()> {
                         "random_icon".into()
                     }
                 )
-                .clone()
             ;
 
             directory.join(file_name)
