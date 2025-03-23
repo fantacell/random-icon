@@ -6,7 +6,7 @@ impl Fields {
     pub(super) fn active_field_shapes_with_rotation(&self) -> Vec<(FieldShape, u16, Orientation)> {
         let mut vec = Vec::new();
 
-        for (num_sector, sector) in self.sectors.iter().enumerate() {
+        for (num_sector, sector) in self.sectors.into_iter().enumerate() {
             let sector_mirrored = num_sector % 2 == 1;
             let orientation = if sector_mirrored {
                 Orientation::Mirrored
@@ -14,8 +14,8 @@ impl Fields {
                 Orientation::Original
             };
 
-            for (num_field, field) in sector.0.iter().enumerate() {
-                if *field == Field::Empty {
+            for (num_field, field) in sector.0.into_iter().enumerate() {
+                if field == Field::Empty {
                     continue
                 }
 
@@ -35,9 +35,9 @@ impl Fields {
             }
         }
 
-        for (num_sector_divider, sector_divider) in self.sector_dividers.iter().enumerate() {
-            for (num_field, field) in sector_divider.0.iter().enumerate() {
-                if *field == Field::Empty {
+        for (num_sector_divider, sector_divider) in self.sector_dividers.into_iter().enumerate() {
+            for (num_field, field) in sector_divider.0.into_iter().enumerate() {
+                if field == Field::Empty {
                     continue
                 }
 
