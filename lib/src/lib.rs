@@ -1,5 +1,5 @@
 mod fields;
-pub mod hash;
+pub mod hashing;
 mod generate;
 mod svg;
 
@@ -11,8 +11,9 @@ use std::{
 };
 
 use fields::Fields;
-use hash::hash;
 use generate::from_hash::HashGen;
+
+pub use hashing::hash;
 
 pub fn write_svg_from_hashed_string<T: Write>(
     string: String,
