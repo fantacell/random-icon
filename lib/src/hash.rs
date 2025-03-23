@@ -1,3 +1,13 @@
+/// A custom hash function that is used in image generation
+/// It works for any String
+/// 
+/// # Examples
+/// 
+/// ```
+/// use random_icon_lib::hash::hash;
+/// let my_string = "Lorem ipsum dolor sit amet...".to_string();
+/// let my_hash = hash(my_string);
+/// ```
 pub fn hash(string: String) -> u32 {
     let mut vec: Vec<u8> = string.into();
 
