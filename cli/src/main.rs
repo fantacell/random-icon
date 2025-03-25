@@ -21,7 +21,6 @@ fn main() -> io::Result<()> {
         .long("path")
         .value_hint(ValueHint::FilePath)
         .value_parser(value_parser!(PathBuf))
-        //.value_name("FILE")
         .help("The path to the target file")
     )
     .arg(

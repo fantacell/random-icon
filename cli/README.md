@@ -1,0 +1,1 @@
+A simple cli tool to use the [random-icon-lib](https://crates.io/crates/random-icon-lib) library.
