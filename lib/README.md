@@ -9,6 +9,8 @@ feature "rand" is enabled can also generate random symbols.
 
 # Examples
 
+Note: Generated icons won't have a white background.
+
 - "Lorem ipsum dolor sit amet"
 
     ![the hashed image](./example-icons/Lorem%20ipsum.svg)
