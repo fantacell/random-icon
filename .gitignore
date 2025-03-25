@@ -2,3 +2,5 @@
 /icons/
 /lib/src/svg/tests/test_files/
 /lib/tests/
+.DS_Store
+/lib/.DS_Store
