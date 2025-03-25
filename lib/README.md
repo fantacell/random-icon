@@ -1,6 +1,6 @@
 Generates svg data by filling these areas or leaving them empty.
 
-![Image showing the outlines of the areas](./outlines.svg)
+![Image showing the outlines of the areas](./example_icons/outlines.svg)
 
 Every area has a probability of about 50% of being filled.
 
@@ -11,16 +11,16 @@ feature "rand" is enabled can also generate random symbols.
 
 - "Lorem ipsum dolor sit amet"
 
-    ![the hashed image](./Lorem%20ipsum.svg)
+    ![the hashed image](./example_icons/Lorem%20ipsum.svg)
 
 - "आइकन 🙂 ▒"
 
-    ![the hashed image](./non_ascii.svg)
+    ![the hashed image](./example_icons/non_ascii.svg)
 
 - ""
 
-    ![the hashed image of an empty string](./empty.svg)
+    ![the hashed image of an empty string](./example_icons/empty.svg)
 
 - Example for a random one
 
-    ![a random icon](random.svg)
+    ![a random icon](./example_icons/random.svg)

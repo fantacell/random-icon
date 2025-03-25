@@ -5,7 +5,6 @@ edition = "2021"
 description = "Generates a random icon from a template."
 keywords = ["random", "icon", "svg"]
 categories = ["encoding"]
-readme = "readme/README.md"
 license = "MIT"
 
 [features]
