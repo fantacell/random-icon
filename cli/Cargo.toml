@@ -4,5 +4,5 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-random-icon-lib = { path = "../lib", version = "0.1.0", features = ["rand"] }
+random-icon-lib = { path = "../lib", version = "0.1.1", features = ["rand"] }
 clap = { version = "4.5.32", features = ["cargo"] }
