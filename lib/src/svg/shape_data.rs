@@ -42,11 +42,10 @@ impl FieldShape {
             },
             SectorDividerInner => {
                 Data::new()
-                .move_to((0, 0))
-                .vertical_line_to(-2.309)
+                .move_to((2.0, -3.464))
                 .line_to((10.325, -8.271))
                 .line_to((12.325, -4.807))
-                .line_to((2.00, 1.155))
+                .line_to((4.0, 0.0))
                 .close()
             },
             SectorDividerMid => {
