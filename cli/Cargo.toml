@@ -3,7 +3,7 @@ name = "random-icon"
 version = "0.1.1"
 edition = "2021"
 description = "Generates a random icon from a template."
-keywords = ["symbol", "icon", "random", "hash", "svg", "cli"]
+keywords = ["symbol", "icon", "random", "hash", "svg"]
 categories = ["encoding"]
 license = "MIT"
 
