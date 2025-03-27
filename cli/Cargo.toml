@@ -9,5 +9,5 @@ license = "MIT"
 readme = "../README.md"
 
 [dependencies]
-random-icon-lib = { path = "../lib", version = "0.1.1", features = ["rand"] }
+random-icon-lib = { path = "../lib", version = "0.1.7", features = ["rand"] }
 clap = { version = "4.5.32", features = ["cargo"] }
