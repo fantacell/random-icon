@@ -1,4 +1,4 @@
-![Lorem ipsum](https://github.com/user-attachments/assets/116a2703-74d8-45b2-aa9d-eb08b5c8df01)Generates svg data by filling these areas or leaving them empty.
+Generates svg data by filling these areas or leaving them empty.
 
 ![an image showing the outlines of the areas](https://github.com/user-attachments/assets/39691ed2-576b-4b49-a36d-11f7c478f040)
 
