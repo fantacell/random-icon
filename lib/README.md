@@ -1,6 +1,6 @@
 Generates svg data by filling these areas or leaving them empty.
 
-<img src="example-icons/outlines.svg" alt="Image showing the outlines of the areas">
+![image showing the outlines of the areas](outlines.svg)
 
 Every area has a probability of about 50% of being filled.
 
@@ -13,16 +13,16 @@ Note: Generated icons won't have a white background.
 
 - "Lorem ipsum dolor sit amet"
 
-    ![the hashed image](lib/example-icons/Lorem%20ipsum.svg)
+    ![the hashed image](Lorem%20ipsum.svg)
 
 - "आइकन 🙂 ▒"
 
-    ![the hashed image](lib/example-icons/non_ascii.svg)
+    ![the hashed image](non_ascii.svg)
 
 - ""
 
-    ![the hashed image of an empty string](lib/example-icons/empty.svg)
+    ![the hashed image of an empty string](empty.svg)
 
 - Example for a random one
 
-    ![a random icon](lib/example-icons/random.svg)
+    ![a random icon](random.svg)
