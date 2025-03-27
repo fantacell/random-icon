@@ -1,6 +1,6 @@
 [package]
 name = "random-icon"
-version = "0.1.3"
+version = "0.1.4"
 edition = "2021"
 description = "Generates a random icon from a template."
 keywords = ["symbol", "icon", "random", "hash", "svg"]
@@ -9,5 +9,5 @@ license = "MIT"
 readme = "../README.md"
 
 [dependencies]
-random-icon-lib = { path = "../lib", version = "0.1.7", features = ["rand"] }
+random-icon-lib = { path = "../lib", version = "0.1.8", features = ["rand"] }
 clap = { version = "4.5.32", features = ["cargo"] }

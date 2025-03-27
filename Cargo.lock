@@ -192,7 +192,7 @@ dependencies = [
 
 [[package]]
 name = "random-icon"
-version = "0.1.3"
+version = "0.1.4"
 dependencies = [
  "clap",
  "random-icon-lib",
@@ -200,7 +200,7 @@ dependencies = [
 
 [[package]]
 name = "random-icon-lib"
-version = "0.1.7"
+version = "0.1.8"
 dependencies = [
  "rand",
  "svg",
