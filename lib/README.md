@@ -1,6 +1,6 @@
 Generates svg data by filling these areas or leaving them empty.
 
-![Image showing the outlines of the areas](./lib/example-icons/outlines.svg)
+<img src="example-icons/outlines.svg" alt="Image showing the outlines of the areas">
 
 Every area has a probability of about 50% of being filled.
 
