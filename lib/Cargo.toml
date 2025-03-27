@@ -6,6 +6,7 @@ description = "Generates a random icon from a template."
 keywords = ["symbol", "icon", "random", "hash", "svg"]
 categories = ["encoding"]
 license = "MIT"
+readme = "../README.md"
 
 [features]
 rand = ["dep:rand"]
