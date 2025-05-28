@@ -7,8 +7,8 @@ pub mod from_hash;
 pub mod random;
 
 impl Fields {
-    pub fn new<G: FieldsGen>(mut gen: G) -> Self {
-        gen.fields()
+    pub fn new<G: FieldsGen>(mut generator: G) -> Self {
+        generator.fields()
     }
 }
 
@@ -33,15 +33,18 @@ pub trait FieldsGen {
                 let sectors: [_; 3] = array::from_fn(|_| self.sector());
                 let sector_dividers: [_; 3] = array::from_fn(|_| self.sector_divider());
 
-                let all_sectors = [sectors[0], sectors[1], sectors[2], sectors[2], sectors[1], sectors[0]];
-                let all_sector_dividers = [sector_dividers[0], sector_dividers[1], sector_dividers[0]];
+                let all_sectors = [
+                    sectors[0], sectors[1], sectors[2], sectors[2], sectors[1], sectors[0],
+                ];
+                let all_sector_dividers =
+                    [sector_dividers[0], sector_dividers[1], sector_dividers[0]];
 
                 Fields {
                     sectors: all_sectors,
                     sector_dividers: all_sector_dividers,
-                    center_field
+                    center_field,
                 }
-            },
+            }
             Symmetry::ThreeAxes => {
                 let sector = self.sector();
                 let sector_divider = self.sector_divider();
@@ -52,20 +55,22 @@ pub trait FieldsGen {
                 Fields {
                     sectors: all_sectors,
                     sector_dividers: all_sector_dividers,
-                    center_field
+                    center_field,
                 }
-            },
+            }
             Symmetry::Point => {
                 let sectors: [_; 3] = array::from_fn(|_| self.sector());
                 let sector_divider = self.sector_divider();
 
-                let all_sectors = [sectors[0], sectors[1], sectors[0], sectors[1], sectors[0], sectors[1]];
+                let all_sectors = [
+                    sectors[0], sectors[1], sectors[0], sectors[1], sectors[0], sectors[1],
+                ];
                 let all_sector_dividers = [sector_divider; 3];
 
                 Fields {
                     sectors: all_sectors,
                     sector_dividers: all_sector_dividers,
-                    center_field
+                    center_field,
                 }
             }
         }

@@ -1,7 +1,7 @@
 [package]
 name = "random-icon-lib"
 version = "0.1.10"
-edition = "2021"
+edition = "2024"
 description = "Generates a random icon from a template."
 keywords = ["symbol", "icon", "random", "hash", "indenticon"]
 categories = ["encoding"]
