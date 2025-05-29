@@ -40,7 +40,7 @@ fn show_all_single_sector_fields(sector_number: usize, file_name_start: PathBuf)
     }
     for (i, fields) in fields_instances.into_iter().enumerate() {
         let path = format!(
-            "./src/svg/tests/test_files/{}_field{}.svg",
+            "./tests/test_files/{}_field{}.svg",
             file_name_start.to_str().unwrap(),
             i
         );

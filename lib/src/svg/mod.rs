@@ -9,7 +9,9 @@ use crate::fields::Fields;
 
 impl Fields {
     pub fn write_as_svg<T: Write>(self, target: T) -> Result<(), io::Error> {
-        let mut document = svg::Document::new().set("viewBox", (-50, -50, 100, 100));
+        let mut document = svg::Document::new()
+            .set("viewBox", (-50, -50, 100, 100))
+            .set("fill", "black");
 
         for (field_shape, degrees, orientation) in self.active_field_shapes_with_rotation() {
             let mut transform_string = format!("rotate({}, 0, 0)", degrees);
@@ -17,7 +19,6 @@ impl Fields {
                 transform_string.push_str(" scale(-1,1)");
             }
             let path_element = svg::node::element::Path::new()
-                .set("fill", "black")
                 .set("d", field_shape.field_border_path_data().path_data)
                 .set("transform", transform_string);
 
