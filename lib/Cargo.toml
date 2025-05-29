@@ -7,6 +7,7 @@ keywords = ["symbol", "icon", "random", "hash", "indenticon"]
 categories = ["encoding"]
 license = "MIT"
 readme = "../README.md"
+repository = "https://github.com/fantacell/random-icon"
 
 [features]
 default = ["rand"]
