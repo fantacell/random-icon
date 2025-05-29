@@ -15,9 +15,9 @@ Note: Generated icons won't have a white background.
 
     ![the hashed image](https://github.com/user-attachments/assets/c1920e2f-1b30-4960-9ab0-4e53b7c53e5e)
 
-- "आइकन 🙂 ▒"
+- "आइकन 🙂 ⠧"
 
-    ![the hashed image](https://github.com/user-attachments/assets/655e9c46-2726-4b14-9112-f15ab7072ea0)
+    ![the hashed image](https://github.com/user-attachments/assets/2e518c03-84fa-4633-ac00-3e8a7eae30ac)
 
 - ""
 
